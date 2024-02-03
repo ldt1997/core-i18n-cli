@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "rootDirs": ["./src"],
+      "module": "esnext",
+      "target": "esnext",
+      "moduleResolution": "node",
+      "outDir": "dist",
+      "lib": ["es6", "es2016.array.include"],
+      "skipLibCheck": true,
+      "sourceMap": true,
+      "rootDir": "src",
+      "allowSyntheticDefaultImports": true
+    },
+    "tsc-alias": {
+      "resolveFullPaths": true,
+      "verbose": false
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", ".vscode-test"]
+  }
+  

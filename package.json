@@ -1,0 +1,46 @@
+{
+  "name": "core-i18n-cli",
+  "version": "1.0.0",
+  "description": "A CLI for react-intl.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "prepublish": "rm -rf dist && tsc && tsc-alias"
+  },
+  "keywords": [
+    "cli",
+    "react-intl",
+    "locales",
+    "i18n",
+    "umi"
+  ],
+  "bin": {
+    "corei18n": "dist/index.js"
+  },
+  "author": "ldt1997",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/parser": "^7.23.6",
+    "@babel/traverse": "^7.23.7",
+    "@babel/types": "^7.23.6",
+    "commander": "^11.1.0",
+    "glob": "^10.3.10",
+    "inquirer": "^9.2.12",
+    "lodash": "^4.17.21",
+    "ora": "^8.0.1",
+    "pify": "^6.1.0",
+    "prettier": "^3.2.4",
+    "querystring": "^0.2.1",
+    "request": "^2.88.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.11.6",
+    "@types/pify": "^5.0.4",
+    "@types/prettier": "^3.0.0",
+    "tsc-alias": "^1.8.8"
+  }
+}
