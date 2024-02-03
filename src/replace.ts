@@ -14,6 +14,7 @@ import {
   isIntlDefaultMessage,
   getLocalLangMap,
   removeTempDir,
+  mkCorei18nDir,
 } from "./utils";
 import { ProjectConfig } from "./const";
 
@@ -144,6 +145,7 @@ const replaceStringLiteralToI18nCallExpression = async (
 
 async function replace() {
   const config = getProjectConfig();
+  mkCorei18nDir();
 
   // 获取本地文案
   langMap = await getLocalLangMap(config);

@@ -4,7 +4,7 @@ import fs from "fs";
 import { glob } from "glob";
 import _ from "lodash";
 import path from "path";
-import { getProjectConfig, hasChinese, trimChinese, generateHash, translateTextByBaidu, isIntlDefaultMessage, getLocalLangMap, removeTempDir, } from "./utils/index.js";
+import { getProjectConfig, hasChinese, trimChinese, generateHash, translateTextByBaidu, isIntlDefaultMessage, getLocalLangMap, removeTempDir, mkCorei18nDir, } from "./utils/index.js";
 const result = {};
 const resolveChineseWordsFromTSX = (path) => new Promise((resolve) => {
     fs.readFile(path, "utf-8", (err, data) => {
@@ -55,6 +55,7 @@ async function generateIds(words, config) {
 }
 async function scan() {
     const config = getProjectConfig();
+    mkCorei18nDir();
     const dirPath = path.resolve(process.cwd(), config.path);
     const files = await glob(dirPath, { ignore: config.ignoreFile });
     console.log("\n✅ 文件路径解析完成");

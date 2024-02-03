@@ -13,6 +13,7 @@ import {
   isIntlDefaultMessage,
   getLocalLangMap,
   removeTempDir,
+  mkCorei18nDir,
 } from "./utils";
 import { ProjectConfig } from "./const";
 
@@ -82,6 +83,8 @@ async function generateIds(
 
 async function scan() {
   const config = getProjectConfig();
+  mkCorei18nDir();
+
   const dirPath = path.resolve(process.cwd(), config.path);
   const files = await glob(dirPath, { ignore: config.ignoreFile });
   console.log("\n✅ 文件路径解析完成");

@@ -98,4 +98,13 @@ export async function removeTempDir() {
         });
     }
 }
+export function mkCorei18nDir() {
+    const config = getProjectConfig();
+    const directoryPath = path.resolve(process.cwd(), config.corei18nDir);
+    // 检查目录是否存在
+    if (!fs.existsSync(directoryPath)) {
+        // 如果目录不存在，则创建目录
+        fs.mkdirSync(directoryPath, { recursive: true });
+    }
+}
 //# sourceMappingURL=file.js.map

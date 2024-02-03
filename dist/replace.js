@@ -8,7 +8,7 @@ import { glob } from "glob";
 import path from "path";
 import pify from "pify";
 import prettier from "prettier";
-import { getProjectConfig, hasChinese, isIntlDefaultMessage, getLocalLangMap, removeTempDir, } from "./utils/index.js";
+import { getProjectConfig, hasChinese, isIntlDefaultMessage, getLocalLangMap, removeTempDir, mkCorei18nDir, } from "./utils/index.js";
 let langMap = {};
 const unhandled = [];
 // 不要替换 intl.formatMessage 里的 defaultMessage
@@ -104,6 +104,7 @@ const replaceStringLiteralToI18nCallExpression = async (filepath, config) => {
 };
 async function replace() {
     const config = getProjectConfig();
+    mkCorei18nDir();
     // 获取本地文案
     langMap = await getLocalLangMap(config);
     // 获取scan后新增的文案
