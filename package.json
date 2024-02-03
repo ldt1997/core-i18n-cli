@@ -17,7 +17,9 @@
   "bin": {
     "corei18n": "dist/index.js"
   },
-  "author": "ldt1997",
+  "author": "luodantong",
+  "registry": "https://registry.npmjs.org/",
+  "homepage": "https://github.com/ldt1997/core-i18n-cli",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.23.7",
