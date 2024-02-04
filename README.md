@@ -1,6 +1,6 @@
 # core-i18n-cli
 
-react-intl 的 CLI 工具，用于自动扫描和替换指定文件夹下的中文文案
+`core-i18n-cli` 是一个基于 `react-intl` 的 CLI 工具，用于自动扫描和替换指定文件夹下的中文文案，以便更轻松地进行国际化开发。
 
 ## 如何使用
 
@@ -11,9 +11,9 @@ npm i -g core-i18n-cli
 ## CLI 参数
 
 ### corei18n  `-i, --init`
-初始化项目，生成配置文件 `corei18n.config.json`
+初始化项目，生成配置文件 `corei18n.config.json`，方便根据你的项目需求进行配置。
 
-默认配置如下：
+默认配置包括以下参数：
 ```ts
 export type ProjectConfig = {
   corei18nDir: string;
@@ -31,7 +31,7 @@ export type ProjectConfig = {
   prettierOptions?: Options;
 };
 ```
-
+详细配置说明：
 ```js
 {
   corei18nDir: "./.corei18n", // corei18n文件根目录，用于放置提取的langs文件
@@ -59,4 +59,4 @@ export type ProjectConfig = {
 
 ### corei18n `-r, --replace`
 
-一键替换指定文件夹下的所有中文文案
+一键替换指定文件夹下的所有中文文案，提高国际化开发效率。
