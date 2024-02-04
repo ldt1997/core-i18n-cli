@@ -91,7 +91,7 @@ export async function removeTempDir() {
     const config = getProjectConfig();
     const corei18nLocalLangPath = getCorei18nLocalLangPath(config);
     if (fs.existsSync(corei18nLocalLangPath)) {
-        fs.rmdir(path.resolve(process.cwd(), `${config.corei18nDir}/${LOCAL_LANG_DIR}`), { recursive: true }, (err) => {
+        fs.rm(path.resolve(process.cwd(), `${config.corei18nDir}/${LOCAL_LANG_DIR}`), { recursive: true }, (err) => {
             if (err) {
                 console.error(`\n删除临时文件夹 ${LOCAL_LANG_DIR} 失败:`, err);
             }

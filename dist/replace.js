@@ -41,7 +41,7 @@ const replaceStringLiteralToI18nCallExpression = async (filepath, config) => {
             const nodeType = node.type;
             // FIXME: 处理模版字符串
             if (nodeType === "TemplateElement" && hasChinese(node?.value?.raw)) {
-                unhandled.push(`${filepath}:${node?.loc?.start?.line}::${node?.loc?.start?.column}`);
+                unhandled.push(`${filepath}:${node?.loc?.start?.line}:${node?.loc?.start?.column}`);
                 return;
             }
             const supportedNodeType = ["StringLiteral", "JSXText"];
@@ -54,7 +54,7 @@ const replaceStringLiteralToI18nCallExpression = async (filepath, config) => {
             if (!hasChinese(nodeValue))
                 return;
             if (!id) {
-                unhandled.push(`${filepath}:${node?.loc?.start?.line}::${node?.loc?.start?.column}`);
+                unhandled.push(`${filepath}:${node?.loc?.start?.line}:${node?.loc?.start?.column}`);
                 return;
             }
             resolvedChineseWords.push(nodeValue);
@@ -120,11 +120,12 @@ async function replace() {
     console.log("\n✅ 文案解析完成");
     const dirPath = path.resolve(process.cwd(), config.path);
     const files = await glob(dirPath, { ignore: config.ignoreFile });
-    files.forEach((file) => replaceStringLiteralToI18nCallExpression(file, config));
+    const promises = files.map((file) => replaceStringLiteralToI18nCallExpression(file, config));
+    await Promise.all(promises);
     console.log("\n✅ 文案替换完成");
     if (!!unhandled.length) {
-        console.log("\n⚠️ 以下位置的文案未处理，可能为模版字符串或缺少文案id，请手动处理：\n");
-        console.log(unhandled.join("\n"));
+        console.log("\n💡 以下位置的文案未处理，可能为模版字符串或缺少文案id，请手动处理：\n");
+        console.log(unhandled.join("\n\n"));
     }
     // 删除临时文件
     removeTempDir();
